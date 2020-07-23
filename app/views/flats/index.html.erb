@@ -1,0 +1,23 @@
+<div class="navbar">
+<h2>Simple Airbnb</h2>
+<%= link_to "Add Flat", new_flat_path , class:"btn btn-primary" %>
+</div>
+<div class="container d-flex justify-content-between">
+  <div class="row row-cols-4">
+  <% @flats.each do |flat| %>
+    <div class="card m-3 p-2">
+      <div class="card-body">
+          <h5 class="card-title"><%= flat.name %></h5>
+          <p class="card-text"><%= flat.address %></p>
+          <p>Guest Number: <%= flat.number_of_guests %></p>
+          <p> € <%= flat.price_per_night %> per night</p>
+          <div class="row justify-content-around">
+            <%= link_to 'More info', flat_path(flat.id), class: "btn btn-primary m-2" %>
+            <%= link_to 'Update Flat', edit_flat_path(flat.id), class: "btn btn-warning m-2" %>
+            <%= link_to 'delete', flat_path(flat.id), method: :delete, class: "btn btn-danger m-2" %>
+          </div>
+      </div>
+    </div>
+    <% end  %>
+  </div>
+</div>
